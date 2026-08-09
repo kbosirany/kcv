@@ -44,14 +44,6 @@ jobs:
           mkdir -p ../../site/cv
           cp cv-main.pdf ../../site/cv/cv-main.pdf
 
-      - name: Build simple CV
-        run: |
-          cd cv/simple
-          pdflatex -interaction=nonstopmode cv-simple.tex
-          pdflatex -interaction=nonstopmode cv-simple.tex
-          mkdir -p ../../site/cv
-          cp cv-simple.pdf ../../site/cv/cv-simple.pdf
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
