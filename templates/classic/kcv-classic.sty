@@ -140,10 +140,12 @@
 % \cventry{Title}{Subtitle or empty}{Organization}{Location}{Dates}
 % optionally followed by a cvpoints environment.
 \newcommand{\cventry}[5]{%
-  \begin{twocolentry}{\textit{#4}\par\textit{#5}}
-    \textbf{#1}\par
-    \ifthenelse{\equal{#2}{}}{}{#2\par}
-    \textit{#3}
+  \begin{twocolentry}{%
+    \ifthenelse{\equal{#4}{}}{}{\textit{#4}\par}%
+    \ifthenelse{\equal{#5}{}}{}{\textit{#5}}}
+    \textbf{#1}%
+    \ifthenelse{\equal{#2}{}}{}{\par #2}%
+    \ifthenelse{\equal{#3}{}}{}{\par\textit{#3}}
   \end{twocolentry}
   \vspace{0.05 cm}
 }
