@@ -1,0 +1,73 @@
+name: Publier les CV sur le portfolio
+
+# Les CV dont le brief contient « portfolio: <nom>.pdf » sont copiés dans
+# kbosirany/kportfolio (public/cv/) via une pull request.
+# Prérequis : secret PORTFOLIO_TOKEN = jeton à portée limitée au dépôt kportfolio
+# (Contents: read/write, Pull requests: read/write). Sans secret, le job s'arrête
+# proprement.
+
+on:
+  push:
+    branches: [main]
+    paths: ["people/**", "templates/**", "scripts/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    env:
+      PORTFOLIO_TOKEN: ${{ secrets.PORTFOLIO_TOKEN }}
+    steps:
+      - name: Vérifier le secret
+        id: secret
+        run: |
+          if [ -z "$PORTFOLIO_TOKEN" ]; then
+            echo "PORTFOLIO_TOKEN absent : rien à publier."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.secret.outputs.ok == 'true'
+        uses: actions/checkout@v4
+      - if: steps.secret.outputs.ok == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - if: steps.secret.outputs.ok == 'true'
+        run: |
+          pip install -r requirements.txt
+          python scripts/valider.py
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra \
+            texlive-fonts-recommended texlive-fonts-extra texlive-lang-french
+          python scripts/compiler.py
+      - if: steps.secret.outputs.ok == 'true'
+        name: Ouvrir une PR sur kportfolio
+        env:
+          GH_TOKEN: ${{ secrets.PORTFOLIO_TOKEN }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          pdfs=(dist/portfolio/*.pdf)
+          [ ${#pdfs[@]} -gt 0 ] || { echo "Aucun CV marqué pour le portfolio."; exit 0; }
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/kbosirany/kportfolio.git" portfolio
+          cd portfolio
+          git checkout -B maj-cv
+          mkdir -p public/cv
+          cp ../dist/portfolio/*.pdf public/cv/
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+            echo "Les PDF du portfolio sont déjà à jour."; exit 0
+          fi
+          git config user.name "kcv-bot"
+          git config user.email "kcv-bot@users.noreply.github.com"
+          git add public/cv
+          git commit -m "CV : mise à jour depuis kcv (${GITHUB_SHA::7})"
+          git push --force origin maj-cv
+          gh pr create --repo kbosirany/kportfolio --head maj-cv --base main \
+            --title "Mise à jour des CV depuis kcv" \
+            --body "PDF régénérés par kcv au commit ${GITHUB_SHA}. Mettre aussi à jour « maj » dans data/cv.yml si besoin." \
+            || gh pr edit maj-cv --repo kbosirany/kportfolio --body "PDF régénérés par kcv au commit ${GITHUB_SHA}."

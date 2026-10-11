@@ -1,0 +1,155 @@
+% kcv-classique.sty
+% Mise en page du CV historique de kcv (inspirée de RenderCV « classic »),
+% extraite de cv/main/main.tex pour être partagée par toutes les personnes.
+% Le contenu (nom, expériences…) ne vit jamais ici : voir TEMPLATE.md.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kcv-classique}[2026/10/11 kcv classique]
+
+\RequirePackage[
+  ignoreheadfoot,
+  top=0.8 cm,
+  bottom=0.8 cm,
+  left=1 cm,
+  right=1 cm,
+  footskip=1.0 cm
+]{geometry}
+\RequirePackage{titlesec}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+\RequirePackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 79, 144}
+\RequirePackage{enumitem}
+\RequirePackage{fontawesome5}
+\RequirePackage{amsmath}
+\RequirePackage[colorlinks=true, urlcolor=primaryColor]{hyperref}
+\RequirePackage{calc}
+\RequirePackage{bookmark}
+\RequirePackage{changepage}
+\RequirePackage{paracol}
+\RequirePackage{ifthen}
+\RequirePackage{needspace}
+\RequirePackage{iftex}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\RequirePackage{etoolbox}
+
+% PDF lisible par les logiciels de recrutement (ATS)
+\ifPDFTeX
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage{lmodern}
+\fi
+
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0cm}
+
+\titleformat{\section}{\needspace{3\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.2 cm}{0.12 cm}
+
+\renewcommand\labelitemi{$\circ$}
+
+\newenvironment{highlights}{
+  \begin{itemize}[
+    topsep=0.05 cm,
+    parsep=0.05 cm,
+    partopsep=0pt,
+    itemsep=0pt,
+    leftmargin=0.4 cm + 10pt
+  ]
+}{
+  \end{itemize}
+}
+
+\newenvironment{onecolentry}{
+  \begin{adjustwidth}{0.2 cm + 0.00001 cm}{0.2 cm + 0.00001 cm}
+}{
+  \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+  \onecolentry
+  \def\secondColumn{#2}
+  \setcolumnwidth{\fill, 4.6 cm}
+  \begin{paracol}{2}
+}{
+  \switchcolumn \raggedleft \secondColumn
+  \end{paracol}
+  \endonecolentry
+}
+
+\newenvironment{header}{
+  \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.25}
+}{
+  \par\kern\topsep
+}
+
+% Liens externes suivis d'une petite flèche
+\let\hrefWithoutArrow\href
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+% ---------------------------------------------------------------------------
+% Macros de contenu : ce sont les seules que cv.tex doit utiliser.
+% ---------------------------------------------------------------------------
+
+% \cvheader{photo ou vide}{Prénom NOM}{contacts séparés par \cvsep}
+\newcommand{\cvsep}{\hspace{0.4 cm plus 0.2 cm}}
+\newcommand{\cvheader}[3]{%
+  \hypersetup{pdftitle={CV - #2}, pdfauthor={#2}}%
+  \begin{header}
+    \vspace{0.1 cm}
+    \ifthenelse{\equal{#1}{}}{%
+      \textbf{\fontsize{20 pt}{20 pt}\selectfont #2}\par
+      \vspace{0.3 cm}\normalsize #3%
+    }{%
+      \begin{minipage}[c]{0.15\textwidth}
+        \centering
+        \begin{tikzpicture}
+          \clip (0,0) circle (1.5cm);
+          \node at (0,0) {\includegraphics[width=3cm]{#1}};
+        \end{tikzpicture}
+      \end{minipage}%
+      \hfill
+      \begin{minipage}[c]{0.80\textwidth}
+        \textbf{\fontsize{20 pt}{20 pt}\selectfont #2}
+
+        \vspace{0.3 cm}
+        \normalsize #3
+      \end{minipage}%
+    }
+  \end{header}
+  \vspace{0.2 cm}
+}
+
+% Contacts : \cvlieu{Ville}, \cvmail{adresse}, \cvtel{+33...}{affichage},
+% \cvlien{icône fontawesome}{url}{affichage}, \cvinfo{icône}{texte}
+\newcommand{\cvlieu}[1]{\mbox{{\footnotesize\faMapMarker*}\hspace*{0.13cm}#1}}
+\newcommand{\cvmail}[1]{\mbox{\hrefWithoutArrow{mailto:#1}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}#1}}}
+\newcommand{\cvtel}[2]{\mbox{\hrefWithoutArrow{tel:#1}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}#2}}}
+\newcommand{\cvlien}[3]{\mbox{\hrefWithoutArrow{#2}{\color{black}{\footnotesize\csname fa#1\endcsname}\hspace*{0.13cm}#3}}}
+\newcommand{\cvinfo}[2]{\mbox{{\footnotesize\csname fa#1\endcsname}\hspace*{0.13cm}#2}}
+
+% Paragraphe libre (profil, compétences…)
+\newcommand{\cvtexte}[1]{\begin{onecolentry}#1\end{onecolentry}\vspace{0.1 cm}}
+
+% \cventree{Intitulé}{Sous-titre ou vide}{Organisation}{Lieu}{Dates}
+% suivi éventuellement d'un environnement cvpoints.
+\newcommand{\cventree}[5]{%
+  \begin{twocolentry}{\textit{#4}\par\textit{#5}}
+    \textbf{#1}\par
+    \ifthenelse{\equal{#2}{}}{}{#2\par}
+    \textit{#3}
+  \end{twocolentry}
+  \vspace{0.05 cm}
+}
+\newenvironment{cvpoints}{\begin{onecolentry}\begin{highlights}}{\end{highlights}\end{onecolentry}\vspace{0.05 cm}}
+
+% Ligne de compétence : \cvcompetence{Catégorie}{liste}
+\newcommand{\cvcompetence}[2]{\begin{onecolentry}\textbf{#1 :} #2\end{onecolentry}\vspace{0.03 cm}}
+
+\endinput
