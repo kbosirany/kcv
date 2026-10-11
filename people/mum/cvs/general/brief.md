@@ -1,12 +1,12 @@
 ---
-template: classique
-langue: fr
+template: classic
+language: fr
 ---
 
-# Brief : CV général
+# Brief: general CV
 
-- **Cible** : poste d'aide-soignante (EHPAD, hôpital, soins à domicile)
-- **Longueur** : 1 page
-- **Sections** : Profil, Expériences professionnelles, Diplômes et formations, Compétences
-- **Notes** : à générer quand `parcours/` sera rempli. `cv.tex` est pour l'instant
-  un squelette sans contenu inventé.
+- **Target**: nursing assistant position (care home, hospital, home care)
+- **Length**: 1 page
+- **Sections**: summary, professional experience, education and training, skills
+- **Notes**: to be generated once `background/` is filled in. `cv.tex` is for now a skeleton with
+  no invented content.

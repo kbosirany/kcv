@@ -1,6 +1,6 @@
-# Parcours de mum, raconté librement
+# Mon parcours, raconté librement
 
-Ce dossier est la **seule source de vérité** sur le parcours de mum. On y écrit comme on
+Ce dossier est la **seule source de vérité** sur mon parcours. On y écrit comme on
 parle : pas de LaTeX, pas de format imposé, pas de limite de longueur. Plus c'est
 détaillé, mieux Claude pourra choisir ce qui compte pour chaque candidature.
 
@@ -13,4 +13,4 @@ Conseils :
 - Les lignes `> À compléter :` sont des questions pour enrichir le récit ; on peut
   les effacer une fois qu'on y a répondu.
 
-Fichiers : `etudes.md`, `experiences.md`, `projets.md`, `divers.md`.
+Fichiers : `education.md`, `experience.md`, `projects.md`, `other.md`.

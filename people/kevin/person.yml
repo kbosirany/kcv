@@ -1,0 +1,12 @@
+# Identity and contact details: what appears in the header of the CVs.
+display_name: "Kevin Bosirany ORLANDO"
+photo: photo.jpg
+cv_languages: [fr]
+default_template: classic
+contacts:
+  location: "Montpellier, France"
+  email: "kevinbosirany@gmail.com"
+  phone: "+33 (0)7 62 04 28 40"
+  linkedin: "https://linkedin.com/in/kbosirany"
+  gitlab: "https://gitlab.com/kbosirany"
+  orcid: "https://orcid.org/0009-0009-2784-3108"

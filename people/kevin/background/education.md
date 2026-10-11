@@ -7,7 +7,7 @@ Université de Montpellier, avec l'Institut Agro Montpellier et AgroParisTech,
 
 J'ai enchaîné ce master juste après mon diplôme d'ingénieur au Maroc.
 L'année s'est terminée par mon stage de fin d'études à INRAE (UMR G-EAU / UMR
-Innovation) sur la gestion de l'eau du bassin de l'Aude face au changement climatique (voir `experiences.md`).
+Innovation) sur la gestion de l'eau du bassin de l'Aude face au changement climatique (voir `experience.md`).
 
 > À compléter : modules suivis et ceux qui m'ont le plus servi, projets de
 > groupe, outils appris, mention ou classement.

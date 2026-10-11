@@ -1,4 +1,4 @@
-name: Valider et compiler les CV
+name: Validate and build CVs
 
 on:
   push:
@@ -19,13 +19,13 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - run: python scripts/valider.py
-      - name: Installer LaTeX
+      - run: python scripts/validate.py
+      - name: Install LaTeX
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends latexmk lmodern texlive-latex-extra \
             texlive-fonts-recommended texlive-fonts-extra texlive-lang-french
-      - run: python scripts/compiler.py
+      - run: python scripts/build.py
       - uses: actions/upload-artifact@v4
         with:
           name: cv-pdf

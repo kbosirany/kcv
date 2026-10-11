@@ -1,12 +1,12 @@
 ---
-template: classique
-langue: fr
-portfolio: cv-fr.pdf   # publié sur kportfolio sous ce nom
+template: classic
+language: fr
+portfolio: cv-fr.pdf   # published to kportfolio under this file name
 ---
 
-# Brief : CV général
+# Brief: general CV
 
-- **Cible** : candidature généraliste en modélisation hydrologique / agronomique
-- **Longueur** : 1 page
-- **Sections** : Profil, Expériences professionnelles, Stages, Parcours académique, Compétences
-- **Notes** : reprend fidèlement l'ancien `cv/main/main.tex` (point de départ de la migration).
+- **Target**: generalist application in hydrological / agronomic modelling
+- **Length**: 1 page
+- **Sections**: summary, professional experience, internships, education, skills
+- **Notes**: faithfully reproduces the old `cv/main/main.tex` (starting point of the migration).
