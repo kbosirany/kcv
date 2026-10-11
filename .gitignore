@@ -1,0 +1,16 @@
+# Sorties de compilation LaTeX
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.out
+*.toc
+*.xdv
+# PDF générés (publiés par la CI, pas commités)
+dist/
+people/*/cvs/*/*.pdf
+# Python
+__pycache__/
+.venv/
+build/
