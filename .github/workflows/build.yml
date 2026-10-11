@@ -23,7 +23,7 @@ jobs:
       - name: Installer LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra \
+          sudo apt-get install -y --no-install-recommends latexmk lmodern texlive-latex-extra \
             texlive-fonts-recommended texlive-fonts-extra texlive-lang-french
       - run: python scripts/compiler.py
       - uses: actions/upload-artifact@v4
