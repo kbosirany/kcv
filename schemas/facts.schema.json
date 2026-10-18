@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "kcv fact sheet",
+  "type": "object",
+  "required": ["version", "education", "experience", "skills"],
+  "additionalProperties": false,
+  "$defs": {
+    "month": {"type": ["string", "null"], "pattern": "^[0-9]{4}(-[0-9]{2})?$"},
+    "text": {"type": ["string", "null"]},
+    "achievement": {
+      "type": "object",
+      "required": ["text"],
+      "additionalProperties": false,
+      "properties": {
+        "text": {"type": "string"},
+        "sub_points": {"type": "array", "items": {"type": "string"}},
+        "keywords": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  },
+  "properties": {
+    "version": {"const": 1},
+    "updated": {"type": "string"},
+    "summary": {"$ref": "#/$defs/text"},
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "degree"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "degree": {"type": "string"},
+          "kind": {"enum": ["diploma", "training"]},
+          "field": {"$ref": "#/$defs/text"},
+          "institution": {"$ref": "#/$defs/text"},
+          "location": {"$ref": "#/$defs/text"},
+          "start": {"$ref": "#/$defs/month"},
+          "end": {"$ref": "#/$defs/month"},
+          "details": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "experience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "title", "organization"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"enum": ["job", "internship", "volunteering", "other"]},
+          "title": {"type": "string"},
+          "subtitle": {"$ref": "#/$defs/text"},
+          "organization": {"type": "string"},
+          "location": {"$ref": "#/$defs/text"},
+          "start": {"$ref": "#/$defs/month"},
+          "end": {"$ref": "#/$defs/month"},
+          "achievements": {"type": "array", "items": {"$ref": "#/$defs/achievement"}}
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "context": {"$ref": "#/$defs/text"},
+          "link": {"$ref": "#/$defs/text"},
+          "start": {"$ref": "#/$defs/month"},
+          "end": {"$ref": "#/$defs/month"},
+          "achievements": {"type": "array", "items": {"$ref": "#/$defs/achievement"}}
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["category", "items"],
+        "additionalProperties": false,
+        "properties": {
+          "category": {"type": "string"},
+          "items": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["language"],
+        "additionalProperties": false,
+        "properties": {
+          "language": {"type": "string"},
+          "level": {"$ref": "#/$defs/text"}
+        }
+      }
+    },
+    "open_questions": {"type": "array", "items": {"type": "string"}}
+  }
+}

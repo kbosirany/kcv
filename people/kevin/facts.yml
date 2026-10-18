@@ -1,0 +1,125 @@
+# yaml-language-server: $schema=../../schemas/facts.schema.json
+#
+# Fact sheet: structured extract of background/*.md, produced by Claude and reviewed by
+# the person. A CV only uses information present here. Values are CV content (French).
+# Do not edit by hand without updating the narrative too: the narrative is authoritative.
+# Dates are YYYY-MM; end: null means ongoing.
+
+version: 1
+updated: "2026-10-11"
+
+summary: >-
+  Ingénieur en modélisation hydrologique et agronomique, deux ans d'expérience
+  sur l'impact du changement climatique sur les ressources en eau.
+  Modélisation de systèmes hydrologiques complexes, développement de modèles
+  sous R et traitement de données.
+
+education:
+  - id: m2-montpellier
+    degree: "Master 2 Sciences de l'Eau"
+    field: "Eau et Agriculture"
+    institution: "Université de Montpellier, Institut Agro Montpellier, AgroParisTech"
+    location: "Montpellier, France"
+    start: 2022-09
+    end: 2023-09
+    details: []
+  - id: ingenieur-iav
+    degree: "Ingénieur Génie Rural"
+    field: "Eau, Environnement et Infrastructures"
+    institution: "Institut Agronomique et Vétérinaire Hassan II"
+    location: "Rabat, Maroc"
+    start: 2019-09
+    end: 2022-07
+    details: []
+  - id: licence-espa
+    degree: "Licence Génie Civil"
+    field: "Hydraulique et Aménagement"
+    institution: "École Supérieure Polytechnique d'Antananarivo"
+    location: "Antananarivo, Madagascar"
+    start: 2015-09
+    end: 2019-07
+    details: []
+
+experience:
+  - id: inrae-ingenieur
+    type: job
+    title: "Ingénieur d'études"
+    subtitle: "Chargé de modélisation hydrologique et agronomique"
+    organization: "INRAE, UMR G-EAU / UMR Innovation"
+    location: "Montpellier, France"
+    start: 2023-09
+    end: null
+    achievements:
+      - text: "Étude d'impact du changement climatique sur les volumes prélevables du bassin versant de l'Aude (projet Talanoa Water)"
+        sub_points:
+          - "Modélisation hydrologique semi-distribuée du réseau hydrographique et hydraulique (GR4J + CemaNeige)"
+          - "Acquisition et traitement des données climatiques (SAFRAN, DRIAS Explore 2), des prélèvements (AERMC, DDTM…) et de la gestion des ouvrages (EDF, VNF, BRL…)"
+          - "Calibration du modèle et naturalisation des débits"
+          - "Calcul des volumes prélevables"
+        keywords: [hydrologie, changement climatique, GR4J, CemaNeige, données]
+      - text: "Développement du modèle Optirrig (génération, analyse et optimisation de scénarios d'irrigation)"
+        sub_points:
+          - "Développement et maintenance du package R OptirrigCORE"
+          - "Implémentation des formalismes du modèle (croissance de la plante, bilan hydrique…)"
+          - "Acquisition et traitement des données expérimentales"
+          - "Calibration pour différentes cultures (maïs, blé…)"
+        keywords: [R, développement logiciel, irrigation, agronomie]
+      - text: "Base de données spatiale des besoins en eau des principales cultures irriguées en France, 2000-2100 (projet MAA, PTGE)"
+        sub_points: []
+        keywords: [données spatiales, irrigation, prospective]
+  - id: inrae-stage
+    type: internship
+    title: "Stage de fin d'études"
+    subtitle: null
+    organization: "INRAE, UMR G-EAU / UMR Innovation"
+    location: "Montpellier, France"
+    start: 2023-03
+    end: 2023-08
+    achievements:
+      - text: "Modélisation de la gestion de la ressource en eau du bassin versant de l'Aude en contexte de changement climatique (projet Talanoa Water)"
+        sub_points: []
+        keywords: [hydrologie, changement climatique]
+  - id: iav-stage
+    type: internship
+    title: "Stage de fin d'études"
+    subtitle: null
+    organization: "Institut Agronomique et Vétérinaire Hassan II, département Génie Rural"
+    location: "Rabat, Maroc"
+    start: 2022-02
+    end: 2022-07
+    achievements:
+      - text: "Détermination de la consommation et de la productivité de l'eau dans le bassin hydraulique de l'Oum Er Rbia"
+        sub_points: []
+        keywords: [productivité de l'eau, irrigation]
+  - id: adi-stage
+    type: internship
+    title: "Stage d'insertion en milieu professionnel"
+    subtitle: null
+    organization: "Compagnie d'Aménagement et de Développement Industriel (ADI)"
+    location: "Rabat, Maroc"
+    start: 2021-07
+    end: 2021-09
+    achievements:
+      - text: "Dimensionnement du réseau projeté pour la reconversion en irrigation localisée du secteur RD1 du périmètre de la Tessaout aval"
+        sub_points: []
+        keywords: [hydraulique, irrigation localisée, dimensionnement]
+
+projects: []
+
+skills:
+  - category: "Programmation"
+    items: ["R", "Python (bases)", "Fortran (bases)"]
+  - category: "Modélisation"
+    items: ["GR4J", "CemaNeige", "Optirrig", "Epanet"]
+  - category: "Versioning et CI/CD"
+    items: ["Git", "GitLab", "GitHub", "GitLab CI", "GitHub Actions"]
+  - category: "Outils"
+    items: ["Windows", "Linux", "Microsoft Office", "LibreOffice", "AutoCAD"]
+
+languages: []
+
+# Open questions spotted in the narrative ("À compléter" lines).
+open_questions:
+  - "Modules taken in each degree"
+  - "Concrete results at INRAE (deliverables, publications, OptirrigCORE users)"
+  - "Languages and levels"

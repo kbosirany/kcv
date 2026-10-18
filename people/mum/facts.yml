@@ -1,0 +1,193 @@
+# yaml-language-server: $schema=../../schemas/facts.schema.json
+#
+# Mum's fact sheet, built from background/*.md (her old CV, then scans of her diplomas and
+# certificates, October 2026). Values are CV content (French). Items still to confirm are NOT
+# included here; they are listed in open_questions.
+# Dates are YYYY-MM; end: null means ongoing.
+
+version: 1
+updated: "2026-10-17"
+
+summary: >-
+  Aide-soignante diplômée d'État en EHPAD, où elle a évolué d'agent de soin à aide-soignante
+  grâce à une formation financée par son employeur. Titulaire du titre professionnel
+  d'assistante de vie aux familles, de l'AFGSU 2 et du PSC, avec 15 ans d'expérience dans la
+  gestion des intrants de santé à Madagascar.
+
+education:
+  # Diplomas and professional titles (kind: diploma)
+  - id: deas
+    degree: "Diplôme d'État d'aide-soignant (DEAS)"
+    kind: diploma
+    field: null
+    institution: "IFAS de Saintes, antenne de Saint-Jean-d'Angély"
+    location: "Saint-Jean-d'Angély, France"
+    start: "2024"
+    end: 2025-03
+    details: []
+  - id: advf
+    degree: "Titre professionnel d'assistante de vie aux familles (ADVF)"
+    kind: diploma
+    field: "Niveau 3"
+    institution: "Greta de Saintonge"
+    location: "France"
+    start: 2023-07
+    end: 2023-07
+    details: []
+  - id: bac
+    degree: "Baccalauréat de l'enseignement général"
+    kind: diploma
+    field: null
+    institution: null
+    location: "Madagascar"
+    start: "1999"
+    end: "1999"
+    details: []
+  # Trainings and certificates (kind: training)
+  - id: plaies
+    degree: "Plaies et cicatrisation"
+    kind: training
+    field: "14 h"
+    institution: "MFR, site d'Aytré"
+    location: "Bernay-Saint-Martin, France"
+    start: 2026-10
+    end: 2026-10
+    details: []
+  - id: diversite
+    degree: "La diversité culturelle"
+    kind: training
+    field: "14 h"
+    institution: "Forma Santé"
+    location: null
+    start: 2026-09
+    end: 2026-09
+    details: []
+  - id: psc
+    degree: "Premiers Secours Citoyen (PSC)"
+    kind: training
+    field: "Brevet de secourisme, 7 h"
+    institution: "Croix-Rouge Compétence Nouvelle-Aquitaine"
+    location: "Saintes, France"
+    start: 2026-05
+    end: 2026-05
+    details: []
+  - id: afgsu2
+    degree: "Attestation de formation aux gestes et soins d'urgence de niveau 2 (AFGSU 2)"
+    kind: training
+    field: null
+    institution: "CESU 17, Groupe Hospitalier de La Rochelle-Ré-Aunis"
+    location: "La Rochelle, France"
+    start: 2024-11
+    end: 2024-11
+    details: []
+  - id: prap-sst
+    degree: "Formations Acteur PRAP et Sauveteur Secouriste du Travail (SST)"
+    kind: training
+    field: null
+    institution: null
+    location: null
+    start: 2023-05
+    end: 2023-05
+    details: []
+
+experience:
+  - id: ehpad-aide-soignante
+    type: job
+    title: "Aide-soignante (CDI)"
+    subtitle: null
+    organization: "EHPAD ADMR de Bernay-Saint-Martin"
+    location: "Bernay-Saint-Martin, France"
+    start: 2025-03
+    end: null
+    achievements: []
+  - id: ehpad-agent-de-soin
+    type: job
+    title: "Agent de soin"
+    subtitle: null
+    organization: "EHPAD ADMR de Bernay-Saint-Martin"
+    location: "Bernay-Saint-Martin, France"
+    start: 2023-06
+    end: 2025-02
+    achievements: []
+  - id: stage-jardins-de-mathis
+    type: internship
+    title: "Stage d'auxiliaire de vie (2 au 20 janvier 2023)"
+    subtitle: null
+    organization: "Les Jardins de Mathis"
+    location: "France"
+    start: 2023-01
+    end: 2023-01
+    achievements: []
+  - id: stage-ehpad-bernay
+    type: internship
+    title: "Stage d'auxiliaire de vie (6 au 24 février 2023)"
+    subtitle: null
+    organization: "EHPAD ADMR de Bernay-Saint-Martin"
+    location: "Bernay-Saint-Martin, France"
+    start: 2023-02
+    end: 2023-02
+    achievements: []
+  - id: stage-admr-loulay
+    type: internship
+    title: "Stage d'aide à domicile (3 au 21 avril 2023)"
+    subtitle: null
+    organization: "ADMR de Loulay"
+    location: "Loulay, France"
+    start: 2023-04
+    end: 2023-04
+    achievements: []
+  - id: adef-menage
+    type: job
+    title: "Employée de ménage (intérim)"
+    subtitle: null
+    organization: "ADEF"
+    location: "France"
+    start: 2021-07
+    end: 2022-10
+    achievements: []
+  - id: chu-caissiere
+    type: job
+    title: "Caissière"
+    subtitle: null
+    organization: "CHU de Tanambao I"
+    location: "Antsiranana, Madagascar"
+    start: "2017"
+    end: "2019"
+    achievements: []
+  - id: sante-district-intrants
+    type: job
+    title: "Responsable des intrants de santé"
+    subtitle: null
+    organization: "Service de santé de district Diego I"
+    location: "Antsiranana, Madagascar"
+    start: "2001"
+    end: "2016"
+    achievements: []
+
+projects: []
+
+skills:
+  - category: "Savoir-être"
+    items: ["Autonomie", "Écoute", "Sourire", "Discrétion"]
+  - category: "Savoir-faire"
+    items:
+      - "Capacité d'adaptation"
+      - "Maintien de l'autonomie de la personne dans la vie quotidienne"
+      - "Techniques d'écoute et de relation à la personne"
+      - "Règles d'hygiène et de propreté"
+      - "Règles de sécurité domestique"
+      - "Prévention des risques liés à l'activité physique (PRAP), ergonomie"
+      - "Entretien des locaux et du linge de la personne"
+  - category: "Centres d'intérêt"
+    items: ["Couture", "Marche", "Cinéma"]
+
+languages: []
+
+open_questions:
+  - "DEAS training at IFAS de Saintes (Saint-Jean-d'Angély): exact start month (mid-2024), internships; start date of the CDI (March 2025 to confirm)"
+  - "Confirm the start of the CDI as aide-soignante (March 2025) and the contract of the agent de soin job (CDD?)"
+  - "Pharmacy years: the old CV said '18 years' but 2001-2016 is 15 years; confirm the dates. Summary now says 15 years"
+  - "Exact locations of the Jardins de Mathis internship and of the ADEF assignments (only 'France' so far); Loulay is taken from the name 'ADMR de Loulay'"
+  - "Baccalauréat: year 1999 (from memory, to confirm), series (A2?), city and school"
+  - "Duties of each job, especially health inputs management (15 years): team size, stock, orders, distribution to health centres"
+  - "Languages and levels"
