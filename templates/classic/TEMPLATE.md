@@ -35,6 +35,9 @@ pdfLaTeX).
 \end{document}
 ```
 
+Optional line under the name (birth name, title...): `\cvsubname{née NAME}`, placed just before
+`\cvheader`.
+
 Icons (`\cvlink`, `\cvinfo`): fontawesome5 names without the `\fa` prefix (LinkedinIn, Gitlab,
 Github, Orcid, Car, Globe...).
 

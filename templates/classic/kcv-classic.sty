@@ -75,7 +75,7 @@
 \newenvironment{twocolentry}[2][]{
   \onecolentry
   \def\secondColumn{#2}
-  \setcolumnwidth{\fill, 4.6 cm}
+  \setcolumnwidth{\fill, 5.4 cm}
   \begin{paracol}{2}
 }{
   \switchcolumn \raggedleft \secondColumn
@@ -98,14 +98,19 @@
 % ---------------------------------------------------------------------------
 
 % \cvheader{photo or empty}{First LAST}{contacts separated by \cvsep}
-\newcommand{\cvsep}{\hspace{0.4 cm plus 0.2 cm}}
+% Optional line under the name (e.g. birth name), called before \cvheader: \cvsubname{text}
+\def\cv@subname{}
+\newcommand{\cvsubname}[1]{\def\cv@subname{#1}}
+\newcommand{\cv@printsubname}{%
+  \ifx\cv@subname\@empty\else\par\vspace{0.1 cm}{\large\cv@subname}\fi}
+\newcommand{\cvsep}{\hspace{0.35 cm}}
 \newcommand{\cvheader}[3]{%
   \hypersetup{pdftitle={CV - #2}, pdfauthor={#2}}%
   \begin{header}
     \vspace{0.1 cm}
     \ifthenelse{\equal{#1}{}}{%
-      \textbf{\fontsize{20 pt}{20 pt}\selectfont #2}\par
-      \vspace{0.3 cm}\normalsize #3%
+      \textbf{\fontsize{20 pt}{20 pt}\selectfont #2}\cv@printsubname\par
+      \vspace{0.3 cm}\raggedright\normalsize #3%
     }{%
       \begin{minipage}[c]{0.15\textwidth}
         \centering
@@ -116,10 +121,10 @@
       \end{minipage}%
       \hfill
       \begin{minipage}[c]{0.80\textwidth}
-        \textbf{\fontsize{20 pt}{20 pt}\selectfont #2}
+        \textbf{\fontsize{20 pt}{20 pt}\selectfont #2}\cv@printsubname
 
         \vspace{0.3 cm}
-        \normalsize #3
+        \raggedright\normalsize #3
       \end{minipage}%
     }
   \end{header}

@@ -31,6 +31,7 @@
         "properties": {
           "id": {"type": "string"},
           "degree": {"type": "string"},
+          "kind": {"enum": ["diploma", "training"]},
           "field": {"$ref": "#/$defs/text"},
           "institution": {"$ref": "#/$defs/text"},
           "location": {"$ref": "#/$defs/text"},

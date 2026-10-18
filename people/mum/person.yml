@@ -1,5 +1,6 @@
 # Identity and contact details: what appears in the header of the CVs.
-display_name: "Sikazinony DELPHINE"
+display_name: "Sikazinony COSSAIS"
+birth_name: "DELPHINE"  # shown as "née DELPHINE" under the name
 photo: photo.jpg
 cv_languages: [fr]
 default_template: classic
